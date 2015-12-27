@@ -1,0 +1,156 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>存储设备资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/assets/storage?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li class="active"><a href="/assets/storage?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li><a href="/assets/storage?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li><a href="/assets/storage?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li><a href="/assets/storage?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li><a href="/assets/storage?_=systeminfo&id={{res._id}}">系统信息</a></li>
+    <li><a href="/assets/storage?_=otherinfo&id={{res._id}}">其他备注</a></li>
+</ul>
+
+
+{%block storage_info %}
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="useinfo"></br>
+
+
+<!-- Button trigger modal -->
+<a type="button" class="btn" data-toggle="modal" data-target="#useinfoModel">
+    更新<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+</a>
+
+
+<div class='row'>
+    <div class='col-md-10'>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th>使用部门</th>
+                    <td>{{ res.use_info.department }}</td>
+                </tr>
+                <tr>
+                    <th>负责人</th>
+                    <td>{{ res.use_info.owner }}</td>
+                </tr>
+                <tr>
+                    <th>使用人</th>
+                    <td>{{ res.use_info.users|join(';') }}</td>
+                </tr>
+                <tr>
+                    <th>项目名称</th>
+                    <td>{{ res.use_info.project_name }}</td>
+                </tr>
+                <tr>
+                    <th>项目描述</th>
+                    <td>{{ res.use_info.project_desc }}</td>
+                </tr>
+                <tr>
+                    <th>用途</th>
+                    <td>{{ res.use_info.use }}</td>
+                </tr>
+                <tr>
+                    <th>开始使用时间</th>
+                    <td>{{ res.use_info.stime }}</td>
+                </tr>
+                <tr>
+                    <th>结束使用时间</th>
+                    <td>{{ res.use_info.etime }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='col-md-2'></div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="useinfoModel" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="useinfoModalLabel">{{res.asset_id}}_使用信息更新</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="updateUseInfoForm" action="/assets/storage?_=useinfo&id={{res._id}}" method="post">
+                    <input type="text" class="hidden" id="_type" name="_type" value="useinfo">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="asset_id">使用部门</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="department" name="department" value="{{res.use_info.department}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="owner">负责人</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="owner" name="owner" value="{{res.use_info.owner}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="users">使用人</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="users" name="users" value="{{res.use_info.users|join(';')}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="project_name">项目名称</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="project_name" name="project_name" value="{{res.use_info.project_name}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="project_desc">项目描述</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="project_desc" name="project_desc" value="{{res.use_info.project_desc}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="user">用途</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="use" name="use" value="{{res.use_info.use}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="stime">开始使用时间</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="stime" name="stime" value="{{res.use_info.stime}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="etime">结束使用时间</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="etime" name="etime" value="{{res.use_info.etime}}">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-default">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+{%endblock%}
+{%endblock%}

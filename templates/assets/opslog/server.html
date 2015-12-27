@@ -1,0 +1,34 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="/assets/server?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li><a href="/assets/server?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li><a href="/assets/server?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li><a href="/assets/server?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li><a href="/assets/server?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li><a href="/assets/server?_=systeminfo&id={{res._id}}">系统信息</a></li>
+    <li class="dropdown">
+        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">其他<b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+            <li><a href="#jmeter" tabindex="-1" data-toggle="tab">jmeter</a></li>
+            <li><a href="#ejb" tabindex="-1" data-toggle="tab">ejb</a></li>
+        </ul>
+    </li>
+</ul>
+
+
+
+{%block server_info %}
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="baseinfo"></br>{% include "assets/server/baseinfo.html" %}</div>
+</div>
+
+{%endblock%}
+
+{%endblock%}

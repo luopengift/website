@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{%block title%}测试页面{%endblock%}
+{%block body%}
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li class="active"><a class="navbar-brand" href="/assets">资产系统<span class="badge">4</span></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {%if current_user%}
+                <li><a href="#">欢迎，{{ current_user }}</a></li>
+                <li><a href="/logout">退出</a></li>
+                {%else%}
+                <li><a data-toggle="modal" href="#LoginDialog">登录</a></li> 
+                {%endif%}
+            </ul>
+
+        </div>
+    </div>
+</div>
+</br>
+</br>
+</br>
+<div class='row'>
+    <div class="col-md-2">
+        
+        <ul class="nav bs-docs-sidenav nav-pills nav-stacked">
+        <li>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>资产列表</a>
+            <ul id="collapseThree" class="nav nav-list collapse">
+                <li role="presentation"><a href="/assets">服务器</a></li>
+                <li role="presentation"><a href="/switch">交换机</a></li>
+                <li role="presentation"><a href="/redis/sentiunel">存储</a></li>
+                <!--
+                <li role="presentation"><a href="/publishing/msg">发布详情</a></li>
+                -->
+            </ul>
+        </li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        {%block assets_page%}{%endblock%}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%endblock%}

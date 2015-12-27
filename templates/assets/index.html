@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{%block title%}资产系统{%endblock%}
+{%block body%}
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li class="active"><a class="navbar-brand" href="/assets">资产系统<span class="badge">4</span></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {%if current_user%}
+                <li><a href="#">欢迎，{{ current_user }}</a></li>
+                <li><a href="/logout">退出</a></li>
+                {%else%}
+                <li><a class="btn" data-toggle="modal" data-target="#LoginDialog">登录1</a></li> 
+                <li><a class="btn" href="/login">KSSO登录2</a></li> 
+                {%endif%}
+            </ul>
+        </div>
+    </div>
+</div>
+</br>
+
+</br>
+</br>
+<div class='row'>
+    <div class="col-md-2">
+        
+        <ul class="nav bs-docs-sidenav nav-pills nav-stacked">
+        <li>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>资产列表<span class="caret"></span></a>
+            <ul id="collapseThree" class="nav nav-list collapse">
+                <li role="presentation"><a href="/assets/server">服务器</a></li>
+                <li role="presentation"><a href="/assets/switch">交换机</a></li>
+                <li role="presentation"><a href="/assets/storage">存储</a></li>
+                <li role="presentation"><a href="/assets/ec2">海外AWS-EC2</a></li>
+            </ul>
+        </li>
+        <li><a href="/assets/opslog"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>操作记录</a></li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        {%block assets_page%}
+<!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+            <form class="form-horizontal" id="queryForm" action="/assets/search" method="post">
+                <input type="text" class="hidden" id="_type" name="_type" value="search">
+                <div class="col-md-4">
+                    <select class="form-control" id="queryfrom" multiple data-live-search="true" validate="required:true" name="queryfrom">
+                        <option value="server" selected>服务器</option>
+                        <option value="switch" selected>交换机</option>
+                        <option value="storage" selected>存储</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="item" multiple data-live-search="true" name="item">
+                        <option value="IP" selected>IP</option>
+                        <option value="owner">负责人</option>
+                        <option value="users">使用人</option>
+                    </select>
+                </div>
+
+
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="data" data-live-search="true" name="data" placeholder="搜索"></input>
+                </div>
+                <div class="col-md-2">
+                  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </form>
+<hr/>
+
+<!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
+        {%endblock%}
+    </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="LoginDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">用户登录</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" id="loginForm" action="/login" method="post">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="username"> 用户名</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="username" name="username" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="password">密码</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="password" name="password" autocomplete="off">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-default">登录</button>
+                </form>
+            </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+
+
+<script type="text/javascript">
+$("#item").select2({
+     maximumSelectionLength: 1
+});
+</script>
+
+
+{%endblock%}
+

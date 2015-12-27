@@ -1,0 +1,31 @@
+<div class='row'>
+            <div class='col-md-10'>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>负责人</th>
+                            <td>{{ res.use_info.owner }}</td>
+                            <td><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>
+                        </tr>
+                        <tr>
+                            <th>使用人</th>
+                            <td>{{ res.use_info.users|join(';') }}</td>
+                        </tr>
+                        <tr>
+                            <th>用途</th>
+                            <td>{{ res.use_info.use }}</td>
+                        </tr>
+                        <tr>
+                            <th>开始使用时间</th>
+                            <td>{{ res.use_info.stime }}</td>
+                        </tr>
+                        <tr>
+                            <th>结束使用时间</th>
+                            <td>{{ res.use_info.etime }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class='col-md-2'></div>
+        </div>
+

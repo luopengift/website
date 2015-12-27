@@ -1,0 +1,83 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>交换机资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/assets/switch?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li><a href="/assets/switch?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li><a href="/assets/switch?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li><a href="/assets/switch?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li><a href="/assets/switch?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li><a href="/assets/switch?_=systeminfo&id={{res._id}}">系统信息</a></li>
+    <li class="active"><a href="/assets/switch?_=otherinfo&id={{res._id}}">其他备注</a></li>
+</ul>
+
+
+{%block switch_info %}
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="otherinfo"></br>
+
+
+<!-- Button trigger modal -->
+<a type="button" class="btn" data-toggle="modal" data-target="#otherinfoModel">
+    更新<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+</a>
+
+
+<div class='row'>
+    <div class='col-md-10'>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th>备注</th>
+                    <td>{{ res.others }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='col-md-2'></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="otherinfoModel" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="otherinfoModalLabel">{{res.asset_id}}_备注信息更新</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="updateOtherInfoForm" action="/assets/switch?_=otherinfo&id={{res._id}}" method="post">
+                    <input type="text" class="hidden" id="_type" name="_type" value="otherinfo">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="others">备注</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="others" name="others" rows="5">{{res.others}}</textarea>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-default">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+{%endblock%}
+{%endblock%}

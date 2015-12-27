@@ -1,0 +1,146 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/assets/server?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li><a href="/assets/server?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li><a href="/assets/server?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li><a href="/assets/server?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li><a href="/assets/server?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li class="active"><a href="/assets/server?_=systeminfo&id={{res._id}}">系统信息</a></li>
+</ul>
+
+
+
+{%block server_info %}
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="baseinfo"></br>
+
+
+<!-- Button trigger modal -->
+<a type="button" class="btn" data-toggle="modal" data-target="#systeminfoModel">
+    更新<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+</a>
+
+
+<div class='row'>
+            <div class='col-md-10'>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>操作系统类型</th>
+                            <td>{{ res.system_info.type }}</td>
+                        </tr>
+                        <tr>
+                            <th>操作系统版本</th>
+                            <td>{{ res.system_info.version }}</td>
+                        </tr>
+                        <tr>
+                            <th>root帐号</th>
+                            <td>{{ res.system_info.root_user }}</td>
+                        </tr>
+                        <tr>
+                            <th>root密码</th>
+                            <td>{{ res.system_info.root_passwd }}</td>
+                        </tr>
+                        <tr>
+                            <th>远控管理IP地址</th>
+                            <td>{{ res.system_info.remote_ip }}</td>
+                        </tr>
+                        <tr>
+                            <th>远控管理帐号</th>
+                            <td>{{ res.system_info.remote_user }}</td>
+                        </tr>
+                        <tr>
+                            <th>远控管理密码</th>
+                            <td>{{ res.system_info.remote_passwd }}</td>
+                        </tr>
+                        <tr>
+                            <th>IP地址信息</th>
+                            <td>{{ res.system_info.IP_desc }}</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class='col-md-2'></div>
+        </div>
+
+<!-- Modal -->
+<div class="modal fade" id="systeminfoModel" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="systeminfoModalLabel">{{res.asset_id}}_系统信息更新</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" id="updateSystemInfoForm" action="/assets/server?_=systeminfo&id={{res._id}}" method="post">
+                    <input type="text" class="hidden" id="_type" name="_type" value="systeminfo">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="type">操作系统类型</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="type" name="type" value="{{res.system_info.type}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="version">操作系统版本</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="version" name="version" value="{{res.system_info.version}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="root_user">root帐号</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="root_user" name="root_user" value="{{res.system_info.root_user}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="root_passwd">root密码</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="root_passwd" name="root_passwd" value="{{res.system_info.root_passwd}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="remote_ip">远控管理IP地址</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="remote_ip" name="remote_ip" value="{{res.system_info.remote_ip}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="remote_user">远控管理帐号</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="remote_user" name="remote_user" value="{{res.system_info.remote_user}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="remote_passwd">远控管理密码</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="remote_passwd" name="remote_passwd" value="{{res.system_info.remote_passwd}}">
+                        </div>
+                    </div>
+
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-default">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+</div>
+{%endblock%}
+{%endblock%}

@@ -1,0 +1,35 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+资产信息
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>资产号</th>
+            <th>SN号</th>
+            <th>详情</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for r in res %}  
+        <tr>
+            <input class="hidden" name="asset_id" value="{{ r.asset_id }}">
+            <input class="hidden" name="sn" value="{{ r.sn }}">
+            <td>{{ r.asset_id }}</td>
+            <td>{{ r.sn }}</td>
+            <td><a class="btn btn-primary btn-xs" href="/assets/server?id={{ r._id }}">查看详情</a></td>
+        </tr> 
+        {%endfor%} 
+    </tbody>
+
+
+
+
+</table>
+
+
+
+
+{%endblock%}

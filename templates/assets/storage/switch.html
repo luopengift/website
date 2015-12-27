@@ -1,0 +1,27 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>交换机资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="/assets/switch?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li><a href="/assets/switch?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li><a href="/assets/switch?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li><a href="/assets/switch?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li><a href="/assets/switch?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li><a href="/assets/switch?_=systeminfo&id={{res._id}}">系统信息</a></li>
+    <li><a href="/assets/switch?_=otherinfo&id={{res._id}}">其他备注</a></li>
+</ul>
+
+
+{%block switch_info %}
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="baseinfo"></br>
+{% include "assets/switch/baseinfo.html" %}
+
+</div>
+</div>
+{%endblock%}
+{%endblock%}

@@ -1,0 +1,77 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+资产信息
+
+<!-- Button trigger modal -->
+<a type="button" class="btn" data-toggle="modal" data-target="#addSwitchModel">
+    新增<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>资产号</th>
+            <th>SN号</th>
+            <th>详情</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for r in res %}  
+        <tr>
+            <input class="hidden" name="asset_id" value="{{ r.asset_id }}">
+            <input class="hidden" name="sn" value="{{ r.sn }}">
+            <td>{{ r.asset_id }}</td>
+            <td>{{ r.sn }}</td>
+            <td><a class="btn btn-primary btn-xs" href="/assets/switch?_=baseinfo&id={{ r._id }}">查看详情</a></td>
+            <td><a class="btn btn-primary btn-xs" href="/assets/switch?_=delete&id={{ r._id }}">删除</a></td>
+        </tr> 
+        {%endfor%} 
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="addSwitchModel" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="addSwitchModalLabel">资产录入</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" id="addStorageForm" action="/assets/switch?_=new" method="post">
+                    <input type="text" class="hidden" id="_type" name="_type" value="new">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="asset_id">资产号</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="asset_id" name="asset_id" value="{{res.asset_id}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="sn">资产SN号</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="sn" name="sn" value="{{res.sn}}">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="state">资产状态</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="state" name="state" value="{{res.state}}">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-default">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}

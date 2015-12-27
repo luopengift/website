@@ -1,0 +1,60 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>交换机资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/assets/switch?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li><a href="/assets/switch?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li><a href="/assets/switch?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li><a href="/assets/switch?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li class="active"><a href="/assets/switch?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li><a href="/assets/switch?_=systeminfo&id={{res._id}}">系统信息</a></li>
+    <li><a href="/assets/switch?_=otherinfo&id={{res._id}}">其他备注</a></li>
+</ul>
+
+
+{%block switch_info %}
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="baseinfo"></br>
+
+
+
+<div class='row'>
+    <div class='col-md-10'>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th>电口数-100M</th>
+                    <td>{{ res.hard_info.tx_100M }}</td>
+                </tr>
+                <tr>
+                    <th>电口数-1G</th>
+                    <td>{{ res.hard_info.tx_1G }}</td>
+                </tr>
+                <tr>
+                    <th>电口数-10G</th>
+                    <td>{{ res.hard_info.tx_10G }}</td>
+                </tr>
+                <tr>
+                    <th>光口数-1G</th>
+                    <td>{{ res.hard_info.sfp_1G }}</td>
+                </tr>
+                <tr>
+                    <th>光口数-10G</th>
+                    <td>{{ res.hard_info.sfp_10G }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='col-md-2'></div>
+</div>
+
+
+</div>
+</div>
+{%endblock%}
+{%endblock%}
+

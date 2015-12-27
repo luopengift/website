@@ -1,0 +1,48 @@
+#日志配置文件
+version: 1
+disable_existing_loggers: False
+formatters:
+    simple:
+        format: '%(asctime)s %(levelname)-8s %(message)s'
+    basic:
+        format: '%(asctime)s %(levelname)-8s %(message)s'
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: simple
+        stream:
+            ext://sys.stdout
+    debug_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: DEBUG
+        formatter: simple
+        filename: /tmp/mylog/debug.log
+        maxBytes: 104857600     #100MB,日志文件的最大文件大小。如果maxBytes为0，意味着日志文件可以无限大
+        backupCount: 20         #指定保留的备份文件的个数
+        encoding: utf8
+    info_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: INFO
+        formatter: simple
+        filename: /tmp/mylog/info.log
+        maxBytes: 104857600 # 100MB
+        backupCount: 20
+        encoding: utf8
+    error_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: ERROR
+        formatter: simple
+        filename: /tmp/mylog/errors.log
+        maxBytes: 104857600 # 100MB
+        backupCount: 20
+        encoding: utf8
+loggers:
+    my_module:
+        level: DEBUG
+        handlers: [console]
+        propagate: no
+root:
+    level: DEBUG
+    handlers: [console, error_file_handler]
+    loggers: [my_module]

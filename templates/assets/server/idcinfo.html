@@ -1,0 +1,121 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/assets/server?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li><a href="/assets/server?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li><a href="/assets/server?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li class="active"><a href="/assets/server?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li><a href="/assets/server?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li><a href="/assets/server?_=systeminfo&id={{res._id}}">系统信息</a></li>
+</ul>
+
+
+
+{%block server_info %}
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="idcinfo"></br>
+
+<!-- Button trigger modal -->
+<a type="button" class="btn" data-toggle="modal" data-target="#idcinfoModel">
+    更新<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+</a>
+
+
+<div class='row'>
+    <div class='col-md-10'>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th>IDC</th>
+                    <td>{{ res.idc_info.idc }}</td>
+                </tr>
+                <tr>
+                    <th>机柜位置</th>
+                    <td>{{ res.idc_info.cabinet_pos }}</td>
+                </tr>
+                <tr>
+                    <th>托盘位置</th>
+                    <td>{{ res.idc_info.tray_pos }}</td>
+                </tr>
+                <tr>
+                    <th>机房联系人</th>
+                    <td>{{ res.idc_info.jifang_uname }}</td>
+                </tr>
+                <tr>
+                    <th>机房电话</th>
+                    <td>{{ res.idc_info.jifang_phone }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='col-md-2'></div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="idcinfoModel" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="idcinfoModalLabel">{{res.asset_id}}_IDC信息更新</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal" id="updateIdcInfoForm" action="/assets/server?_=idcinfo&id={{res._id}}" method="post">
+                    <input type="text" class="hidden" id="_type" name="_type" value="idcinfo">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="idc">IDC</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="idc" name="idc" value="{{res.idc_info.idc}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="cabinet_pos">机柜位置</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="cabinet_pos" name="cabinet_pos" value="{{res.idc_info.cabinet_pos}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="tray_pos">托盘位置</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="tray_pos" name="tray_pos" value="{{res.idc_info.tray_pos}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="jifang_uname">机房联系人</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="jifang_uname" name="jifang_uname" value="{{res.idc_info.jifang_uname}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="jifang_phone">机房电话</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="jifang_phone" name="jifang_phone" value="{{res.idc_info.jifang_phone}}">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-default">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+</div>
+{%endblock%}
+{%endblock%}

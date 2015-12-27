@@ -1,0 +1,134 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>交换机资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/assets/switch?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li><a href="/assets/switch?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li class="active"><a href="/assets/switch?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li><a href="/assets/switch?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li><a href="/assets/switch?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li><a href="/assets/switch?_=systeminfo&id={{res._id}}">系统信息</a></li>
+    <li><a href="/assets/switch?_=otherinfo&id={{res._id}}">其他备注</a></li>
+</ul>
+
+
+{%block switch_info %}
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="devinfo"></br>
+
+
+<!-- Button trigger modal -->
+<a type="button" class="btn" data-toggle="modal" data-target="#devinfoModel">
+    更新<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+</a>
+
+
+<div class='row'>
+    <div class='col-md-10'>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th>设备品牌</th>
+                    <td>{{ res.dev_info.brand }}</td>
+                </tr>
+                <tr>
+                    <th>设备型号</th>
+                    <td>{{ res.dev_info.model }}</td>
+                </tr>
+                <tr>
+                    <th>设备价格</th>
+                    <td>{{ res.dev_info.price }}</td>
+                </tr>
+                <tr>
+                    <th>购买时间</th>
+                    <td>{{ res.dev_info.buy_time }}</td>
+                </tr>
+                <tr>
+                    <th>过保时间</th>
+                    <td>{{ res.dev_info.expired_time }}</td>
+                </tr>
+                <tr>
+                    <th>合同编号</th>
+                    <td>{{ res.dev_info.contract }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='col-md-2'></div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="devinfoModel" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="devinfoModalLabel">{{res.asset_id}}_设备信息更新</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="updateDevInfoForm" action="/assets/switch?_=devinfo&id={{res._id}}" method="post">
+                    <input type="text" class="hidden" id="_type" name="_type" value="devinfo">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="brand">设备品牌</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="brand" name="brand" value="{{res.dev_info.brand}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="model">设备型号</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="model" name="model" value="{{res.dev_info.model}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="price">设备价格</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="price" name="price" value="{{res.dev_info.price}}">                        
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="buy_time">购买时间</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="buy_time" name="buy_time" value="{{res.dev_info.buy_time}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="expired_time">过保时间</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="expired_time" name="expired_time" value="{{res.dev_info.expired_time}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="contract">合同编号</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="contract" name="contract" value="{{res.dev_info.contract}}">
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-default">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+</div>
+{%endblock%}
+{%endblock%}

@@ -1,0 +1,74 @@
+{
+    'asset_id':'KIDC00001',
+    'sn':'SN000001',
+    'asset_type':'交换机',
+    'state':'使用中',
+    'monitor':1,
+    'dev_info':{
+        'brand':'惠普',
+        'model':'DL380p Gen8',
+        'price':'69000',
+        'buy_time':'20151020',
+        'expired_time':'20151232',
+        'contract':'HT00021QX'
+    },
+
+    'idc_info':{
+        'idc':'兆维1-3',
+        'cabinet_pos':'6-6',
+        'tray_pos':'1-3',
+        'country':'中国',
+        'city':'北京',
+        'manage_team':'xxx',
+        'jifang_uname':'xxx',
+        'jifang_phone':'13800000000',
+        'ascription':'ops'
+    },
+    'hard_info':{
+        'tx_100M':10,
+        'tx_1G':10,
+        'tx_10G':10,
+        'sfp_1G':10,
+        'sfp_10G':10,
+    },
+    'system_info':{
+        'type':'centos',
+        'version':'6.7',
+        'environment':'xxxxxx',
+        'remote_ip':'0.0.0.0',
+        'remote_port':'xxx',
+    },
+    'use_info':{
+        'department':'ops',
+        'owner':'chenxiao',
+        'users':['chenjiliang','luopeng1'],
+        'use':'测试机',
+        'project_name':'xxxx',
+        'project_desc':'xxxxx',
+        'stime':'20151010',
+        'etime':'20161010',
+    },
+    'others':'xxxxxxxxxx'
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

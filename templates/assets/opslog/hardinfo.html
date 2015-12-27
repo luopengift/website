@@ -1,0 +1,115 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/assets/server?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li><a href="/assets/server?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li><a href="/assets/server?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li><a href="/assets/server?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li class="active"><a href="/assets/server?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li><a href="/assets/server?_=systeminfo&id={{res._id}}">系统信息</a></li>
+</ul>
+
+
+
+{%block server_info %}
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="baseinfo"></br>
+
+<div class='row'>
+            <div class='col-md-10'>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>CPU型号</th>
+                            <td>{{ res.hard_info.cpu_model }}</td>
+                        </tr>
+                        <tr>
+                            <th>CPU个数＊CPU核数</th>
+                            <td>{{ res.hard_info.cpu_num }} ＊ {{res.hard_info.cpu_core}}</td>
+                        </tr>
+                        <tr>
+                            <th>内存插槽数</th>
+                            <td>{{ res.hard_info.mem_num }}</td>
+                        </tr>
+                        <tr>
+                            <th>内存总容量(单位:G)</th>
+                            <td>{{ res.hard_info.mem_total }}</td>
+                        </tr>
+                        <tr>
+                            <th>磁盘数量</th>
+                            <td>{{ res.hard_info.disk_num }}</td>
+                        </tr>
+                        <tr>
+                            <th>磁盘总容量(单位:G)</th>
+                            <td>{{ res.hard_info.disk_total }}</td>
+                        </tr>
+                        <tr>
+                            <th>SSD总容量(单位:G)</th>
+                            <td>{{ res.hard_info.ssd_total }}</td>
+                        </tr>
+                        <tr>
+                            <th>RAID型号</th>
+                            <td>{{ res.hard_info.raid_model }}</td>
+                        </tr>
+                        <tr>
+                            <th>RAID缓存</th>
+                            <td>{{ res.hard_info.raid_cache }}</td>
+                        </tr>
+                        <tr>
+                            <th>RAID数量</th>
+                            <td>{{ res.hard_info.raid_num }}</td>
+                        </tr>
+                        <tr>
+                            <th>网卡数量</th>
+                            <td>{{ res.hard_info.net_num }}</td>
+                        </tr>
+                        <tr>
+                            <th>网卡总速率</th>
+                            <td>{{ res.hard_info.net_speed }}</td>
+                        </tr>
+                        <tr>
+                            <th>物理设备挂载信息</th>
+                            <td>{{ res.hard_info.mount }}</td>
+                        </tr>
+                        <tr>
+                            <th>挂载总容量</th>
+                            <td>{{ res.hard_info.mount_rom }}</td>
+                        </tr>
+                        <tr>
+                            <th>电源</th>
+                            <td>{{ res.hard_info.power }}</td>
+                        </tr>
+                        <tr>
+                            <th>内存详情</th>
+                            <td>{{ res.hard_info.mem_desc }}</td>
+                        </tr>
+                        <tr>
+                            <th>磁盘详情</th>
+                            <td>{{ res.hard_info.disk_desc }}</td>
+                        </tr>
+                        <tr>
+                            <th>RAID详情</th>
+                            <td>{{ res.hard_info.raid_desc }}</td>
+                        </tr>
+                        <tr>
+                            <th>网卡详情</th>
+                            <td>{{ res.hard_info.net_desc }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class='col-md-2'></div>
+        </div>
+
+
+
+</div>
+</div>
+{%endblock%}
+{%endblock%}

@@ -1,0 +1,86 @@
+{
+    'asset_id':'KIDC00001',
+    'sn':'SN000001',
+    'asset_type':'服务器',
+    'state':'使用中',
+    'dev_info':{
+        'brand':'惠普',
+        'model':'DL380p Gen8',
+        'unit':'2',
+        'price':'69000',
+        'buy_time':'20151020',
+        'expired_time':'20151232',
+    },
+    'idc_info':{
+        'idc':'兆维1-3',
+        'cabinet_pos':'6-6',
+        'tray_pos':'1-3',
+        'jifang_uname':'xxx',
+        'jifang_phone':'13800000000',
+    },
+    'hard_info':{
+        'cpu_model':'E5-2620v3',
+        'cpu_num':6,
+        'cpu_core':2,
+        'mem_num':8,
+        'mem_total':64,
+        'mem_desc':[{'type':'DDR3-1200','ram':8},],
+        'disk_num':2,
+        'disk_total':1000,
+        'disk_desc':[{'type':'STAT','model':'xxx','sn':'0001','speed':'7200','rom':'500G'},],
+        'ssd_total':250,
+        'raid_model':'级联卡',
+        'raid_cache':'XXX-512M',
+        'raid_num':2,
+        'raid_desc':[{'type':'raid5','sn':['xxxx','xxxx','xxxx']},{'type':'raid10','sn':['xxxx','xxxx']}],
+        'net_num':3,
+        'net_speed':444,
+        'net_desc':[{'brand':'xxx','model':'xxx','speed':'100M','mac':'20-30-xxx','switch_port':'33'},],
+        'mount':'xxxx',
+        'mount_rom':'xxxx',
+        'power':[{'sn':'power001','type':'直流','watt':700},]
+    },
+    'system_info':{
+        'type':'centos',
+        'version':'6.7',
+        'root_user':'root',
+        'root_passwd':'root',
+        'remote_ip':'0.0.0.0',
+        'remote_user':'xxx',
+        'remote_passwd':'xxxx',
+        'IP_desc':{
+            'ip':"[['192.168.1.1','201.192.3.45'],['10.10.10.10','1.1.1.1'],[],[],[],[],[],[]]",
+            'bond':"[[0,1],[2,3]]",
+        },
+    },
+    'use_info':{
+        'owner':'chenxiao',
+        'users':['chenjiliang','luopeng1'],
+        'use':'测试机',
+        'stime':'20151010',
+        'etime':'20161010',
+    }
+
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

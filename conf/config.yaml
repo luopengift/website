@@ -1,0 +1,27 @@
+#服务器配置
+HttpServerPort: 80
+
+#调试模式
+DebugModel: True
+
+#mongodb数据库
+mongoIP: 10.33.20.49
+mongoPort: 27017
+mongoDB: 'mysite'
+
+#mysql数据库
+mysqlIP: 10.33.20.49
+mysqldbPort: 3306
+mysqldb: 'mysite'
+#mysql帐号密码
+mysqlusername: 'root'
+mysqlpassword: 'root'
+
+
+#auth用户认证
+whiteList: ['testwhite']
+blackList: ['testblack']
+
+
+
+

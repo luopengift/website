@@ -1,0 +1,113 @@
+{%extends "assets/index.html"%}
+
+{%block assets_page%}
+</br>
+
+<h5>交换机资产号:{{res.asset_id}}</h5>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="/assets/switch?_=baseinfo&id={{res._id}}">基本信息</a></li>
+    <li><a href="/assets/switch?_=useinfo&id={{res._id}}">使用信息</a></li>
+    <li><a href="/assets/switch?_=devinfo&id={{res._id}}">设备信息</a></li>
+    <li><a href="/assets/switch?_=idcinfo&id={{res._id}}">IDC信息</a></li>
+    <li><a href="/assets/switch?_=hardinfo&id={{res._id}}">硬件信息</a></li>
+    <li><a href="/assets/switch?_=systeminfo&id={{res._id}}">系统信息</a></li>
+    <li><a href="/assets/switch?_=otherinfo&id={{res._id}}">其他备注</a></li>
+</ul>
+
+
+{%block switch_info %}
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="baseinfo"></br>
+
+
+<!-- Button trigger modal -->
+<a type="button" class="btn" data-toggle="modal" data-target="#baseinfoModel">
+    更新<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+</a>
+<div class='row'>
+
+    <div class='col-md-10'>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th>资产号</th>
+                    <td>{{ res.asset_id }}</td>
+                </tr>
+                <tr>
+                    <th>资产SN号</th>
+                    <td>{{ res.sn }}</td>
+                </tr>
+                <tr>
+                    <th>资产类型</th>
+                    <td>{{ res.asset_type }}</td>
+                </tr>
+                <tr>
+                    <th>资产状态</th>
+                    <td>{{ res.state }}</td>
+                </tr>
+                <tr>
+                    <th>监控状态</th>
+                    <td>{{ res.monitor }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='col-md-2'></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="baseinfoModel" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="baseinfoModalLabel">{{res.asset_id}}_基本信息更新</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="updateBaseInfoForm" action="/assets/switch?_=baseinfo&id={{res._id}}" method="post">
+                    <input type="text" class="hidden" id="_type" name="_type" value="baseinfo">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="asset_id">资产号</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="asset_id" name="asset_id" value="{{res.asset_id}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="sn">资产SN号</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="sn" name="sn" value="{{res.sn}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="asset_type">资产类型</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="asset_type" name="asset_type" value="{{res.asset_type}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="state">资产状态</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="state" name="state" value="{{res.state}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="monitor">监控状态</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" id="monitor" name="monitor" value="{{res.monitor}}">
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-default">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+{%endblock%}
+{%endblock%}
