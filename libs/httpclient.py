@@ -68,7 +68,7 @@ def multiHttpResponse(url, method='POST',data=None,count=5,sleep=5):
 
 if __name__ == '__main__':
     #data=urllib.urlencode({'username':'luopeng1','password':'b0!Xb-x)'})
-    #httpResponse('https://ksso.kisops.com/login?forward=http://10.33.20.49:8000/login',data)
+    #httpResponse('https://www.baidu.com/login?forward=http://10.33.20.49:8000/login',data)
     #data = json.dumps({'_id':'55fa98c88a825641b202722e','title':'test','blog':u'你好','time':123456567,'author':'luopeng1'})
     #print httpResponse('http://10.33.20.49:8001')
     #url = 'http://myview.chinanetcenter.com/api/bandwidth-channel.action?u=db_kingsoft&p=myviewAPI_Kingsoft&startdate=2015-11-09&enddate=2015-11-09&channel=news.pop.www.duba.net&isExactMatch=true&region=cn;fg&isp=cn;other&resultType=2&format=json'
