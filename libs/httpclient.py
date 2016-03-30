@@ -9,12 +9,12 @@ def httpResponse(url, method='POST',data=None,headers=None):
     response = None
     if headers == None:
         headers = {
-            "Origin": "https://ksso.kisops.com",
+            "Origin": "https://www.baidu.com",
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) " +\
                 "AppleWebKit/537.36 (KHTML, like Gecko) " +\
                 "Chrome/34.0.1847.116 Safari/537.36",
             "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": "https://ksso.kisops.com/login?forward=http://localhost",
+            "Referer": "https://www.baidu.com/login?forward=http://localhost",
             "Accept-Encoding": "gzip,deflate,sdch",
             "Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4",
             "Cookie": "sessionid=ubwzabfvvyy0ft4y4nk5qlduv7nswrim",
