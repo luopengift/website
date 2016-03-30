@@ -13,14 +13,14 @@ cur_dir = os.path.dirname(os.path.abspath(__file__))
 
 
 class KSSO_API():
-    def __init__(self,forward_url=None,ksso_url='https://ksso.kisops.com/'):
-        self.ksso_url = ksso_url
+    def __init__(self,forward_url=None,ksso_url='https://sso.shabi.com/'):
+        self.sso_url = sso_url
         self.forward_url = forward_url
         self.context = ssl._create_unverified_context()
 
     @property
     def login_url(self):
-        return '{ksso_url}login?forward={forward_url}'.format(ksso_url = self.ksso_url,forward_url = self.forward_url)
+        return '{sso_url}login?forward={forward_url}'.format(sso_url = self.ksso_url,forward_url = self.forward_url)
 
     @property
     def logout_url(self):
